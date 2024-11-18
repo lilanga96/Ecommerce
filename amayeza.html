@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amayeza - Isintu Siybukwa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <header>
+        
+        <button onclick="window.location.href='index.html'" class="header-btn continue-shopping">
+            <i class="ri-arrow-left-line"></i> HOME
+        </button>
+        <h1>AMAYEZA</h1>
+        <button onclick="window.location.href='cart.html'" class="header-btn cart-icon">
+            <i class="ri-shopping-cart-line"></i> (<span id="cart-count">0</span>)
+        </button>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            <div class="product-item" data-id="1" data-name="Herbal Remedy 1" data-price="100">
+                <h2>Herbal Remedy 1</h2>
+                <p>Price: R100</p>
+                <button onclick="addToCart(1, 'Herbal Remedy 1', 100)">Add to Cart</button>
+            </div>
+            <div class="product-item" data-id="2" data-name="Herbal Remedy 2" data-price="150">
+                <h2>Herbal Remedy 2</h2>
+                <p>Price: R150</p>
+                <button onclick="addToCart(2, 'Herbal Remedy 2', 150)">Add to Cart</button>
+            </div>
+            <!-- Add more products as needed -->
+        </section>
+    </main>
+</body>
+</html>

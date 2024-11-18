@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isintu Siybukwa Traditional Medicine Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="scripts.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="./images/logo.jpeg" alt="Isintu Siybukwa Logo" class="logo"> 
+        <div class="header-text">
+            <h1>Isintu Siybukwa Traditional Medicine</h1>
+            <p>Explore our range of traditional medicine and services</p>
+        </div>
+        <button onclick="window.location.href='cart.html'" class="header-btn cart-icon">
+            <i class="ri-shopping-cart-line"> (<span id="cart-count">0</span>)</i>
+        </button>
+    </header>
+    <div id="add-to-cart-modal" class="modal">
+        <p id="modal-message">Item added to cart!</p>
+    </div>
+
+    
+    <div id="auth-modal" class="authant-modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleAuthModal()">&times;</span>
+            <h2 id="auth-modal-title">Sign Up / Log In</h2>
+            <form id="auth-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="button" onclick="handleAuth()" class="modal-button">Submit</button>
+            </form>
+            <p id="auth-toggle-text">
+                Don't have an account? <a href="#" onclick="toggleAuthMode()">Sign up here</a>
+            </p>
+        </div>
+    </div>
+    
+   
+    <div class="menu-container">
+        <nav class="menu">
+            <ul>
+                <li><a href="amayeza.html">AMAYEZA</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="tshirts.html">TSHIRTS</a></li>
+                <li><a href="amalaphu.html">AMALAPHU</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="products" id="products">
+            <button onclick="toggleAuthModal()" class="signup-btn">
+                <i class="ri-user-add-line"></i> Sign Up
+            </button>
+            <div id="product-list" class="product-grid"></div>
+        </section>
+    </main>
+</body>
+</html>
