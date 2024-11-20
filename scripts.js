@@ -62,7 +62,7 @@ async function signUpUser(email, password) {
     });
 
     if (error) {
-        console.error('Signup error:', error); // Log full error details
+        console.error('Signup error:', error); 
         alert('Signup failed: ' + error.message);
     } else {
         alert('Signup successful! Please check your email to verify your account.');
@@ -83,9 +83,44 @@ async function loginUser(email, password) {
     }
 }
 const products = [
-    { id: 1, name: 'Herbal Tonic', price: 15.99 },
-    { id: 2, name: 'Healing Salve', price: 12.50 },
-    { id: 3, name: 'Medicinal Tea', price: 8.75 },
+    { id: 1, name: 'Ibala', price: 20.00 },
+    { id: 2, name: 'Smoothie', price: 50.00 },
+    { id: 3, name: 'Ibhola Lovuyo', price: 50.00 },
+    { id: 4, name: 'Umthi Wokuhlamba', price: 100.00 },
+    { id: 5, name: 'Phindisa Isichitho', price: 100.00 },
+    { id: 6, name: 'Cacisa amaphupha', price: 100.00 },
+    { id: 7, name: 'Vulintlahla', price: 100.00 },
+    { id: 8, name: 'Umthi wesilwane', price: 100.00 },
+    { id: 9, name: 'Sweet talker', price: 100.00 },
+    { id: 10, name: 'Isabunge', price: 100.00 },
+    { id: 11, name: 'Umsebenzi wendawo', price: 100.00 },
+    { id: 12, name: 'Amacelebrity', price: 100.00 },
+    { id: 13, name: 'Pepper steak', price: 100.00 },
+    { id: 14, name: 'Qhaqha amaqhina', price: 100.00 },
+    { id: 15, name: 'Gilindoda', price: 100.00 },
+    { id: 16, name: 'Phindisa Izinto Zabaloyi', price: 100.00 },
+    { id: 17, name: 'Umthi wokuchela', price: 100.00 },
+    { id: 18, name: 'Umusa wocela', price: 100.00 },
+    { id: 19, name: 'Intlambuluko', price: 100.00 },
+    { id: 20, name: 'Cisha insthaba', price: 100.00 },
+    { id: 21, name: 'Navigator', price: 100.00 },
+    { id: 22, name: 'Shukumisa ibhedi(Yogi)', price: 100.00 },
+    { id: 23, name: 'Zifozonke', price: 100.00 },
+    { id: 24, name: 'Xabana Bodwa', price: 100.00 },
+    { id: 25, name: 'Thethisa Abathakathi', price: 100.00 },
+    { id: 26, name: 'Umagudluza', price: 100.00 },
+    { id: 27, name: 'Vaseline', price: 120.00 },
+    { id: 28, name: 'Iyeza lebekelo', price: 250.00 },
+    { id: 29, name: 'Dabula amafu', price: 150.00 },
+    { id: 30, name: 'Thandeka ebantwini', price: 100.00 },
+    { id: 31, name: 'Woza', price: 100.00 },
+    { id: 32, name: 'Isiqhumiso somoya', price: 100.00 },
+    { id: 33, name: 'Iyeza ledliso', price: 300.00 },
+    { id: 34, name: 'Umthi wemali', price: 150.00 },
+    { id: 35, name: 'Modules', price: 550.00 },
+    { id: 36, name: 'Intambo/Ispaji', price: 750.00 },
+    { id: 37, name: 'Amanzi amnyama', price: 100.00 },
+    { id: 38, name: 'Iyeza lesilonda', price: 750.00 },
 ];
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];

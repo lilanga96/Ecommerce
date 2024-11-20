@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "types": ["https://deno.land/x/types@v0.1.0/mod.d.ts"]
+    },
+    "importMap": "./import_map.json"
+  }
+  

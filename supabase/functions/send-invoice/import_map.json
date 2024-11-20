@@ -1,0 +1,7 @@
+{
+    "imports": {
+      "https://deno.land/x/dotenv/mod.ts": "https://deno.land/x/dotenv@v3.2.0/mod.ts",
+      "nodemailer": "https://cdn.skypack.dev/nodemailer@6.7.1"
+    }
+  }
+  

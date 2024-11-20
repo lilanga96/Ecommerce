@@ -3,7 +3,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 function updateCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
-    cartItemsContainer.innerHTML = '';
+    cartItemsContainer.innerHTML = ''; 
 
     let total = 0;
     cart.forEach((item, index) => {
@@ -22,13 +22,10 @@ function updateCart() {
 }
 
 function deleteItem(index) {
-   
-    cart.splice(index, 1);
 
-    
+    cart.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    
     updateCart();
 }
 
@@ -38,16 +35,53 @@ function finalizeOrder() {
         return;
     }
 
-    let invoice = "Thank you for your order!\n\nOrder Summary:\n";
-    cart.forEach(item => {
-        invoice += `${item.name} x${item.quantity}: R${(item.price * item.quantity).toFixed(2)}\n`;
-    });
-    invoice += `\nTotal: R${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}`;
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+    const orderDetails = {
+        email: prompt("Enter your email to receive the invoice:"),
+        cart: cart.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price
+        })),
+        total: total
+    };
 
-    alert("Invoice sent:\n\n" + invoice);
-    cart = [];
-    localStorage.removeItem('cart');
-    updateCart();
+    if (!orderDetails.email) {
+        alert("Email is required to send the invoice.");
+        return;
+    }
+
+  
+    const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1ZGRsZmx0bWtiemNra3VpcGNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE1OTMyNDgsImV4cCI6MjA0NzE2OTI0OH0.W0HSWVCl5ejWTTOqrtVDorqhWBULkOj6maofkL1LNII'
+    fetch('https://yuddlfltmkbzckkuipcg.supabase.co/functions/v1/send-invoice', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${SUPABASE_API_KEY}`,
+        },
+        body: JSON.stringify(orderDetails),
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then((error) => {
+                throw new Error(error.error || "Unknown error occurred");
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert("Invoice sent! Check your email.");
+        cart = [];
+        localStorage.removeItem('cart');
+        updateCart();
+    })
+    .catch(error => {
+        console.error("Error sending invoice:", error.message);
+        alert(`An error occurred: ${error.message}`);
+    });
+    
+   
 }
+
 
 updateCart();
