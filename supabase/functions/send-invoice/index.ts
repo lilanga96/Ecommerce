@@ -1,44 +1,61 @@
-export const handler = async (req) => {
-  const headers = new Headers({
-    "Access-Control-Allow-Origin": "*", 
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Credentials": "true",
-  });
+import { serve } from "https://deno.land/std/http/server.ts";
 
-  if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers });
-  }
+const handler = async (req) => {
+    const headers = {
+        'Access-Control-Allow-Origin': '*', 
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    };
 
-  try {
-    if (req.method !== "POST") {
-      return new Response(
-        JSON.stringify({ error: "Method not allowed" }),
-        { status: 405, headers }
-      );
+    
+    if (req.method === 'OPTIONS') {
+        return new Response(null, { headers });
     }
 
-    const { email, cart } = await req.json();
-    if (!email || !cart || cart.length === 0) {
-      return new Response(
-        JSON.stringify({ error: "Invalid input: email or cart missing" }),
-        { status: 400, headers }
-      );
+    try {
+       
+        const { to, subject, html } = await req.json();
+
+       
+        if (!to || !subject || !html) {
+            return new Response(
+                JSON.stringify({ message: "Missing required fields" }),
+                {
+                    status: 400,
+                    headers,
+                }
+            );
+        }
+
+        
+        console.log(`Sending email to ${to} with subject: ${subject}`);
+
+        
+
+       
+        return new Response(
+            JSON.stringify({ message: "Email sent successfully" }),
+            {
+                status: 200,
+                headers,
+            }
+        );
+    } catch (error) {
+        console.error("Error processing request:", error);
+
+        // Respond with error
+        return new Response(
+            JSON.stringify({
+                message: "Failed to process request",
+                error: error.message,
+            }),
+            {
+                status: 500,
+                headers,
+            }
+        );
     }
-
-    // Simulate invoice processing
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-   
-
-    return new Response(
-      JSON.stringify({ message: "Invoice sent successfully!" }),
-      { status: 200, headers }
-    );
-  } catch (error) {
-    console.error("Error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to process request", details: error.message }),
-      { status: 500, headers }
-    );
-  }
 };
+
+// Start the server
+serve(handler);

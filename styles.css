@@ -74,41 +74,33 @@ header {
     gap: 5px;
     margin-left: 1.27rem;
     position: relative;
-    bottom: 2.5rem;
+    bottom: 9rem;
 }
 
 .signup-btn:hover {
-    background-color: #b71c1c;
+    background-color: #f4dfdf;
 }
 
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.product-item {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: #fff;
-    text-align: center;
-}
 
 .continue-shopping{
     background-color: rgba(245, 245, 245, 0.55);
 }
 
 .product-item button {
-    background-color: #800000;
-    color: #fff;
+    align-self: center; 
+    padding: 8px 16px;
     border: none;
-    padding: 8px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
+    background-color: #800000;
+    color: white;
     cursor: pointer;
-    margin-top: 10px;
-    font-size: 0.9rem;
+    transition: background-color 0.3s;
 }
 
 .product-item button:hover {
@@ -161,6 +153,7 @@ main {
     max-width: 900px;
     margin: 20px auto;
     border-radius: 8px;
+   
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -177,6 +170,8 @@ main {
     padding: 15px;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 10px;
+    align-items: center;
+    
 }
 
 .cart-item:last-child {
@@ -192,6 +187,9 @@ main {
 .cart-item-details {
     flex-grow: 1;
     margin-left: 15px;
+    display: flex;
+    flex-direction: column; /* Stack item details vertically */
+    justify-content: center;
 }
 
 .cart-item-name {
@@ -202,6 +200,10 @@ main {
 .cart-item-price {
     color: #800000;
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    
+    
 }
 
 .cart-item-quantity {
@@ -397,6 +399,125 @@ main {
 #auth-toggle-text a:hover {
     text-decoration: underline;
 }
+
+.search-bar {
+    margin: 20px auto; 
+    text-align: center;
+    padding: 10px 0; 
+}
+
+.search-bar input {
+    width: 80%; 
+    max-width: 600px; 
+    padding: 12px 15px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 25px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out; 
+    outline: none; 
+}
+
+.search-bar input:focus {
+    border-color: #800000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.search-bar input::placeholder {
+    color: #aaa; 
+    font-style: italic; 
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+    bottom: 3rem;
+   
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    
+}
+
+.slider-group {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 15px;
+    padding: 10px;
+    min-width: 100%;
+    justify-items: center;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 38%;
+    transform: translate3d();
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: Arial, sans-serif;
+}
+
+.slider-btn.prev {
+    left: 10px;
+   background-color: transparent;
+    font-size: 5rem;
+    color: #800000;
+    font-weight: 100;
+}
+
+.slider-btn.next {
+    right: 10px;
+    background-color: transparent;
+    font-size: 5rem;
+    color: #800000;
+    font-weight: 100;
+}
+
+.slider-btn:hover {
+    transform: scale(1.2);
+   
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 200px; 
+    width: 250px; 
+    box-sizing: border-box; 
+}
+
+
+
+
 
 
 @keyframes fadeIn {

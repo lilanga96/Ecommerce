@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="scripts.js" defer></script>
+    <script src="./cart.js" defer></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
     <script src="./supabase/functions/send-invoice/index.js" defer></script>
 </head>
@@ -14,7 +16,7 @@
     <header>
         <img src="./images/logo.jpeg" alt="Isintu Siybukwa Logo" class="logo"> 
         <div class="header-text">
-            <h1>Isintu Siybukwa Traditional Medicine</h1>
+            <h1>Isintu Siyabukwa Traditional Medicine</h1>
             <p>Explore our range of traditional medicine and services</p>
         </div>
         <button onclick="window.location.href='cart.html'" class="header-btn cart-icon">
@@ -58,11 +60,25 @@
     </div>
 
     <main>
-        <section class="products" id="products">
-            <button onclick="toggleAuthModal()" class="signup-btn">
+        <section class="products" id="products" >
+            
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search for products..." oninput="filterProducts()">
+            </div>
+            <button id="auth-button" onclick="handleAuthButtonClick()" class="signup-btn">
                 <i class="ri-user-add-line"></i> Sign Up
             </button>
-            <div id="product-list" class="product-grid"></div>
+            
+            
+           
+            
+            <div class="slider-container">
+                
+                <button class="slider-btn prev" onclick="slide(-1)">&#10094;</button>
+                <div class="slider-wrapper" id="slider-wrapper"></div>
+                <button class="slider-btn next" onclick="slide(1)">&#10095;</button>
+            </div>
         </section>
     </main>
 </body>
