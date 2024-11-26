@@ -188,7 +188,7 @@ main {
     flex-grow: 1;
     margin-left: 15px;
     display: flex;
-    flex-direction: column; /* Stack item details vertically */
+    flex-direction: column; 
     justify-content: center;
 }
 
